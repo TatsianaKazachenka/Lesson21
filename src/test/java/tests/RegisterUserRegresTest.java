@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class RegisterUserRegresTest {
 
     @Test(description = "successful registration")
-    public void registerUserTest(){
+    public void registerUserTest() {
         User user = User.builder()
                 .email("eve.holt@reqres.in")
                 .password("pistol")
@@ -18,7 +18,7 @@ public class RegisterUserRegresTest {
     }
 
     @Test(description = "unsuccessful registration")
-    public void registerUserUnsuccessfulTest(){
+    public void registerUserUnsuccessfulTest() {
         User user = User.builder()
                 .email("sydney@fife")
                 .build();

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class LoginUserReqresTest {
 
     @Test(description = "login successful")
-    public void loginUserTest(){
+    public void loginUserTest() {
         User user = User.builder()
                 .email("eve.holt@reqres.in")
                 .password("pistol")
@@ -20,7 +20,7 @@ public class LoginUserReqresTest {
     }
 
     @Test(description = "unsuccessful login")
-    public void loginUserUnsuccessfulTest(){
+    public void loginUserUnsuccessfulTest() {
         User user = User.builder()
                 .email("eve.holt@reqres.in")
                 .password("pistol")

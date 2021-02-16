@@ -14,8 +14,7 @@ public class UserRegresAdapter extends ReqresBaseAdapter {
         try {
             UsersList list = new Gson().fromJson(body, UsersList.class);
             return list;
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             log.info("Catch exception: " + ex.getMessage());
             return null;
         }
@@ -26,8 +25,7 @@ public class UserRegresAdapter extends ReqresBaseAdapter {
         try {
             SingleUser user = new Gson().fromJson(body, SingleUser.class);
             return user;
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             log.info("Catch exception: " + ex.getMessage());
             return null;
         }
@@ -38,38 +36,35 @@ public class UserRegresAdapter extends ReqresBaseAdapter {
             int code = getStatusCode(String.format("%s/%s", USERS_URL, id));
             return code;
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             log.info("Catch exception: " + ex.getMessage());
             return -1;
         }
     }
 
-    public String create(CreateUser user){
+    public String create(CreateUser user) {
         return post(USERS_URL, converter.toJson(user))
                 .body()
                 .path("id");
     }
 
-    public CreateUser updatePut(CreateUser user, int id){
+    public CreateUser updatePut(CreateUser user, int id) {
         String body = put(String.format("%s/%s", USERS_URL, id), converter.toJson(user)).body().asPrettyString();
         try {
             CreateUser updateUser = new Gson().fromJson(body, CreateUser.class);
             return updateUser;
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             log.info("Catch exception: " + ex.getMessage());
             return null;
         }
     }
 
-    public CreateUser updatePatch(CreateUser user, int id){
+    public CreateUser updatePatch(CreateUser user, int id) {
         String body = patch(String.format("%s/%s", USERS_URL, id), converter.toJson(user)).body().asPrettyString();
         try {
             CreateUser updateUser = new Gson().fromJson(body, CreateUser.class);
             return updateUser;
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             log.info("Catch exception: " + ex.getMessage());
             return null;
         }
@@ -80,8 +75,7 @@ public class UserRegresAdapter extends ReqresBaseAdapter {
             int code = delete(String.format("%s/%s", USERS_URL, id));
             return code;
 
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             log.info("Catch exception: " + ex.getMessage());
             return -1;
         }

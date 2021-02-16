@@ -5,21 +5,19 @@ import lombok.extern.log4j.Log4j2;
 import objects.User;
 
 @Log4j2
-public class RegisterUserRegresAdapter extends ReqresBaseAdapter{
+public class RegisterUserRegresAdapter extends ReqresBaseAdapter {
     private static final String USERS_REGISTER_URL = "register";
 
-    public String register(User user){
+    public String register(User user) {
         ResponseBody body = post(USERS_REGISTER_URL, converter.toJson(user))
                 .body();
         try {
-            if(!body.path("error").toString().isEmpty()){
+            if (!body.path("error").toString().isEmpty()) {
                 return body.path("error");
-            }
-            else{
+            } else {
                 return body.path("token");
             }
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             log.info("Catch exception: " + ex.getMessage());
             return null;
         }
