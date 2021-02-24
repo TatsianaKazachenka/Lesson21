@@ -4,6 +4,7 @@ import io.restassured.response.ResponseBody;
 import lombok.extern.log4j.Log4j2;
 import objects.User;
 
+
 @Log4j2
 public class RegisterUserRegresAdapter extends ReqresBaseAdapter {
     private static final String USERS_REGISTER_URL = "register";
@@ -11,8 +12,9 @@ public class RegisterUserRegresAdapter extends ReqresBaseAdapter {
     public String register(User user) {
         ResponseBody body = post(USERS_REGISTER_URL, converter.toJson(user))
                 .body();
+        User userResponse = converter.fromJson(body.asString(), User.class);
         try {
-            if (!body.path("error").toString().isEmpty()) {
+            if (userResponse.getError() != null) {
                 return body.path("error");
             } else {
                 return body.path("token");

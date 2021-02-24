@@ -11,8 +11,10 @@ public class LoginUserRegresAdapter extends ReqresBaseAdapter {
     public String login(User user) {
         ResponseBody body = post(USERS_LOGIN_URL, converter.toJson(user))
                 .body();
+
+        User userResponse = converter.fromJson(body.asString(), User.class);
         try {
-            if (!body.path("error").toString().isEmpty()) {
+            if (userResponse.getError() != null) {
                 return body.path("error");
             } else {
                 return body.path("token");
