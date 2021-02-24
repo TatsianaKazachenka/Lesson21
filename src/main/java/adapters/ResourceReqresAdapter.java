@@ -3,7 +3,7 @@ package adapters;
 import com.google.gson.Gson;
 import objects.*;
 
-public class ResourceReqresAdapter extends ReqresBaseAdapter{
+public class ResourceReqresAdapter extends ReqresBaseAdapter {
     private static final String RESOURCE_LIST_URL = "unknown";
 
     public ResourciesList getListResource() {

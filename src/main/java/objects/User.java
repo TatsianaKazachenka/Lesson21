@@ -17,4 +17,5 @@ public class User {
     String avatar;
     String password;
     String token;
+    String error;
 }
